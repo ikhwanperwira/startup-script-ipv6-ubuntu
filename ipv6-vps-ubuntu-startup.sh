@@ -46,15 +46,6 @@ cp /root/rclone.conf /root/.config/rclone
 apt -y install fuse3
 mkdir /mnt/gdunsri
 fusermount -u /mnt/gdunsri
-/bin/rclone mount gdunsri:/ /mnt/gdunsri \
-	--allow-non-empty \
-	--allow-other \
-	--allow-root \
-	--async-read  \
-	--dir-perms 7777 \
-	--file-perms 7777 \
-	--no-checksum
-ls /mnt/gdunsri
 
 # startup mount
 wget -N https://raw.githubusercontent.com/wawan-ikhwan/startup-script-ipv6-ubuntu/main/rclone-mount.service
@@ -62,7 +53,7 @@ mv rclone-mount.service /etc/systemd/system/rclone-mount.service
 systemctl daemon-reload
 systemctl enable rclone-mount.service
 systemctl start rclone-mount.service
-systemctl status rclone-mount.service
+ls /mnt/gdunsri
 
 # cleaning resource
 rm -rf ipv6-vps-ubuntu-startup.sh menu.sh rclone.conf rclone_conf.zip rclone-v1.64.2-linux-amd64 rclone-v1.64.2-linux-amd64.zip
