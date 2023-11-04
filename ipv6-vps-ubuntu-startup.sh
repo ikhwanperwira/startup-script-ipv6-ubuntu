@@ -22,8 +22,8 @@ yes "" | /root/menu.sh 4 &&
 # install rclone
 yes "" | wget -N https://github.com/rclone/rclone/releases/download/v1.64.2/rclone-v1.64.2-linux-amd64.zip
 apt -y install unzip
-unzip rclone-v*-linux-amd64.zip
-cp rclone-v*-linux-amd64/rclone /bin
+unzip rclone-v1.64.2-linux-amd64.zip
+cp rclone-v1.64.2-linux-amd64/rclone /bin
 
 # configuring rclone
 yes "" | wget -N https://github.com/wawan-ikhwan/startup-script-ipv6-ubuntu/raw/main/rclone_conf.zip
