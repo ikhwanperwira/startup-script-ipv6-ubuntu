@@ -18,14 +18,12 @@ echo "screen -DRR" >> /root/.profile
 wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh
 chmod +x /root/menu.sh
 yes "" | /root/menu.sh 4
-exec bash
 
 # install rclone
 yes "" | wget -N https://github.com/rclone/rclone/releases/download/v1.64.2/rclone-v1.64.2-linux-amd64.zip
 apt -y install unzip
 unzip rclone-v*-linux-amd64.zip
 cp rclone-v*-linux-amd64/rclone /bin
-exec bash
 
 # configuring rclone
 yes "" | wget -N https://github.com/wawan-ikhwan/startup-script-ipv6-ubuntu/raw/main/rclone_conf.zip
@@ -36,4 +34,4 @@ cp /root/rclone.conf /root/.config/rclone
 
 # mounting rclone
 mkdir /mnt/gdunsri
-rclone mount gdunsri:/ /mnt/gdunsri --daemon
+/bin/rclone mount gdunsri:/ /mnt/gdunsri --daemon
