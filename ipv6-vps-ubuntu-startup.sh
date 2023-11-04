@@ -19,8 +19,10 @@ wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh
 chmod +x /root/menu.sh
 yes "" | /root/menu.sh 4 &&
 
+echo ""
+
 # install rclone
-yes "" | wget -N https://github.com/rclone/rclone/releases/download/v1.64.2/rclone-v1.64.2-linux-amd64.zip
+wget -N https://github.com/rclone/rclone/releases/download/v1.64.2/rclone-v1.64.2-linux-amd64.zip
 apt -y install unzip
 unzip /root/rclone-v1.64.2-linux-amd64.zip
 cp /root/rclone-v1.64.2-linux-amd64/rclone /bin
