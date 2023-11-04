@@ -19,6 +19,7 @@ wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh ||
 chmod +x /root/menu.sh ||
 yes "" | /root/menu.sh 4 ||
 
+# sesuatu barrier agar bisa memanggil
 echo "sleeping" ||
 sleep 2
 echo "done sleep"
