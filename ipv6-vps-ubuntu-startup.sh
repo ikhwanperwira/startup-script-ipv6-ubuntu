@@ -15,19 +15,19 @@ echo 'termcapinfo xterm* ti@:te@' >> /root/.screenrc
 echo "screen -DRR" >> /root/.profile
 
 # sesuatu barrier agar bisa memanggil
-echo "sleeping" &&
-sleep 2 &&
-echo "done sleep" &&
+echo "sleeping"
+sleep 2
+echo "done sleep"
 
 # install warp
-wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh &&
-chmod +x /root/menu.sh &&
-echo "" | /root/menu.sh 4 &&
+wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh
+chmod +x /root/menu.sh
+echo "" | /root/menu.sh 4
 
 # sesuatu barrier agar bisa memanggil
-echo "sleeping" &&
-sleep 2 &&
-echo "done sleep" &&
+echo "sleeping"
+sleep 2
+echo "done sleep"
 
 # install rclone
 wget -N https://github.com/rclone/rclone/releases/download/v1.64.2/rclone-v1.64.2-linux-amd64.zip
@@ -43,7 +43,9 @@ mkdir /root/.config/rclone
 cp /root/rclone.conf /root/.config/rclone
 
 # mounting rclone
+apt -y install fuse3
 mkdir /mnt/gdunsri
+fusermount -u /mnt/gdunsri
 /bin/rclone mount gdunsri:/ /mnt/gdunsri --daemon
 ls /mnt/gdunsri
 
