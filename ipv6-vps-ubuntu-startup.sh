@@ -40,3 +40,4 @@ cp /root/rclone.conf /root/.config/rclone
 # mounting rclone
 mkdir /mnt/gdunsri
 /bin/rclone mount gdunsri:/ /mnt/gdunsri --daemon
+ls /mnt/gdunsri
