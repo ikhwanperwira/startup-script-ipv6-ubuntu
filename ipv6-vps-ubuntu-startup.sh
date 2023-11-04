@@ -41,3 +41,6 @@ cp /root/rclone.conf /root/.config/rclone
 mkdir /mnt/gdunsri
 /bin/rclone mount gdunsri:/ /mnt/gdunsri --daemon
 ls /mnt/gdunsri
+
+# cleaning resource
+rm -rf ipv6-vps-ubuntu-startup.sh menu.sh rclone.conf rclone_conf.zip rclone-v1.64.2-linux-amd64 rclone-v1.64.2-linux-amd64.zip
