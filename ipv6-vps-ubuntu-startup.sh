@@ -1,24 +1,39 @@
 #!/bin/bash
 
-# argument $1 diisi dengan konfigurasi rclone.conf
+# catatan, jalankan skrip ini di direktori /root
+# argument $1 diisi dengan password rclone_conf yait awalannya T akhirannya _
 
+# updating
 export DEBIAN_FRONTEND=noninteractive
 apt -y update
 apt -y upgrade
+
+# install screen
 apt -y install screen
 echo 'caption always "%{= kc}Screen session on %H (system load: %l)%-28=%{= .m}%D %d.%m.%Y %0c"' >> /root/.screenrc
 echo 'termcapinfo xterm* ti@:te@' >> /root/.screenrc
 echo "screen -DRR" >> /root/.profile
 
+# install warp
 wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh
 chmod +x /root/menu.sh
-echo "" | /root/menu.sh 4
+yes "" | /root/menu.sh 4
 exec bash
 
-wget -N https://github.com/rclone/rclone/releases/download/v1.64.2/rclone-v1.64.2-linux-amd64.zip
+# install rclone
+yes "" | wget -N https://github.com/rclone/rclone/releases/download/v1.64.2/rclone-v1.64.2-linux-amd64.zip
 apt -y install unzip
-unzip rclone-v1.64.2-linux-amd64.zip
-cp rclone-v1.64.2-linux-amd64/rclone /bin
+unzip rclone-v*-linux-amd64.zip
+cp rclone-v*-linux-amd64/rclone /bin
+exec bash
+
+# configuring rclone
+yes "" | wget -N https://github.com/wawan-ikhwan/startup-script-ipv6-ubuntu/raw/main/rclone_conf.zip
+unzip -o -P $1 rclone_conf.zip
 mkdir /root/.config
 mkdir /root/.config/rclone
-cp $1 /root/.config/rclone
+cp /root/rclone.conf /root/.config/rclone
+
+# mounting rclone
+mkdir /mnt/gdunsri
+rclone mount gdunsri:/ /mnt/gdunsri --daemon
