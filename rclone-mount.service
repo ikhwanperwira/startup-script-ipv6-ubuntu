@@ -1,0 +1,14 @@
+[Unit]
+Description=Rclone Mount Service
+
+[Service]
+Type=simple
+User=YOUR_USERNAME
+ExecStart=/usr/bin/rclone mount gdunsri:/ /mnt/gdunsri --allow-non-empty --allow-other --allow-root --async-read --dir-perms 7777 --file-perms 7777 --no-checksum
+Restart=on-failure
+RestartSec=5
+StartLimitInterval=60s
+StartLimitBurst=3
+
+[Install]
+WantedBy=multi-user.target

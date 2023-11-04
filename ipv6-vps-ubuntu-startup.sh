@@ -46,7 +46,14 @@ cp /root/rclone.conf /root/.config/rclone
 apt -y install fuse3
 mkdir /mnt/gdunsri
 fusermount -u /mnt/gdunsri
-/bin/rclone mount gdunsri:/ /mnt/gdunsri --daemon
+/bin/rclone mount gdunsri:/ /mnt/gdunsri \
+	--allow-non-empty \
+	--allow-other \
+	--allow-root \
+	--async-read  \
+	--dir-perms 7777 \
+	--file-perms 7777 \
+	--no-checksum
 ls /mnt/gdunsri
 
 # cleaning resource
