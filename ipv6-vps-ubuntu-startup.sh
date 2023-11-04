@@ -15,9 +15,13 @@ echo 'termcapinfo xterm* ti@:te@' >> /root/.screenrc
 echo "screen -DRR" >> /root/.profile
 
 # install warp
-wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh
-chmod +x /root/menu.sh
-yes "" | /root/menu.sh 4
+wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh ||
+chmod +x /root/menu.sh ||
+yes "" | /root/menu.sh 4 ||
+
+echo "sleeping" ||
+sleep 2
+echo "done sleep"
 
 # install rclone
 yes "" | wget -N https://github.com/rclone/rclone/releases/download/v1.64.2/rclone-v1.64.2-linux-amd64.zip
