@@ -4,7 +4,7 @@ Aku capek setup VPS IPv6 setelah VPS terinstall, makanya kubuatkan saja script s
 # Install
 Jangan lupa posisi direktori ada di `/root`
 ```
- wget -N https://raw.githubusercontent.com/wawan-ikhwan/startup-script-ipv6-ubuntu/main/ipv6-vps-ubuntu-startup.sh && chmod +x * && ./ipv6-vps-ubuntu-startup.sh <PW>
+wget -N https://raw.githubusercontent.com/wawan-ikhwan/startup-script-ipv6-ubuntu/main/ipv6-vps-ubuntu-startup.sh && chmod +x * && ./ipv6-vps-ubuntu-startup.sh <PW>
  ```
 
 # Password
