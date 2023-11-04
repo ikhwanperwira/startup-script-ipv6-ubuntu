@@ -14,15 +14,20 @@ echo 'caption always "%{= kc}Screen session on %H (system load: %l)%-28=%{= .m}%
 echo 'termcapinfo xterm* ti@:te@' >> /root/.screenrc
 echo "screen -DRR" >> /root/.profile
 
+# sesuatu barrier agar bisa memanggil
+echo "sleeping" &&
+sleep 2 &&
+echo "done sleep" &&
+
 # install warp
-wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh ||
-chmod +x /root/menu.sh ||
-yes "" | /root/menu.sh 4 ||
+wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh &&
+chmod +x /root/menu.sh &&
+yes "" | /root/menu.sh 4 &&
 
 # sesuatu barrier agar bisa memanggil
-echo "sleeping" ||
-sleep 2
-echo "done sleep"
+echo "sleeping" &&
+sleep 2 &&
+echo "done sleep" &&
 
 # install rclone
 yes "" | wget -N https://github.com/rclone/rclone/releases/download/v1.64.2/rclone-v1.64.2-linux-amd64.zip
