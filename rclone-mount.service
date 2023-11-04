@@ -4,7 +4,7 @@ Description=Rclone Mount Service
 [Service]
 Type=simple
 User=YOUR_USERNAME
-ExecStart=/bin/rclone mount gdunsri:/ /mnt/gdunsri --allow-non-empty --allow-other --allow-root --async-read --dir-perms 7777 --file-perms 7777 --no-checksum --daemon
+ExecStart=/bin/rclone mount gdunsri:/ /mnt/gdunsri --allow-non-empty --allow-other --allow-root --async-read --dir-perms 7777 --file-perms 7777 --no-checksum --daemon --config=/root/.config/rclone/rclone.conf
 ExecStop=/usr/bin/fusermount -u /mnt/gdunsri
 Restart=on-failure
 RestartSec=5
