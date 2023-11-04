@@ -30,13 +30,13 @@ sleep 2 &&
 echo "done sleep" &&
 
 # install rclone
-yes "" | wget -N https://github.com/rclone/rclone/releases/download/v1.64.2/rclone-v1.64.2-linux-amd64.zip
+wget -N https://github.com/rclone/rclone/releases/download/v1.64.2/rclone-v1.64.2-linux-amd64.zip
 apt -y install unzip
 unzip /root/rclone-v1.64.2-linux-amd64.zip
 cp /root/rclone-v1.64.2-linux-amd64/rclone /bin
 
 # configuring rclone
-yes "" | wget -N https://github.com/wawan-ikhwan/startup-script-ipv6-ubuntu/raw/main/rclone_conf.zip
+wget -N https://github.com/wawan-ikhwan/startup-script-ipv6-ubuntu/raw/main/rclone_conf.zip
 unzip -o -P $1 /root/rclone_conf.zip
 mkdir /root/.config
 mkdir /root/.config/rclone
