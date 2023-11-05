@@ -1,5 +1,7 @@
 [Unit]
 Description=Rclone Mount Service
+After=network-online.target
+Wants=network-online.target
 
 [Service]
 Type=simple
@@ -7,10 +9,9 @@ User=root
 ExecStart=/bin/rclone mount gdunsri:/ /mnt/gdunsri --allow-non-empty --allow-other --async-read --dir-perms 7777 --file-perms 7777 --no-checksum --config=/root/.config/rclone/rclone.conf -vv
 ExecStop=/usr/bin/fusermount -u /mnt/gdunsri
 Restart=on-failure
-RestartSec=5
+RestartSec=30
 StartLimitInterval=60s
 StartLimitBurst=3
-
 
 [Install]
 WantedBy=multi-user.target

@@ -65,7 +65,13 @@ cp /root/rclone.conf /root/.config/rclone
 # creating fuse device
 apt -y install fuse3
 if hostnamectl | grep -q openvz && [ ! -e /dev/fuse ]; then
-  mknod /dev/fuse c 10 229
+  # wget create-fuse-node.sh
+  # wget create-fuse-node.service
+  chmod +x /root/create-fuse-node.sh
+  mv /root/create-fuse-node.sh /usr/local/bin/
+  systemctl daemon-reload
+  systemctl enable create-fuse-node.service
+  systemctl start create-fuse-node.service
 else
   echo "This virtualization is not OpenVZ or /dev/fuse already exists"
 fi

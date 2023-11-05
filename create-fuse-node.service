@@ -1,0 +1,9 @@
+[Unit]
+Description=Create /dev/fuse device node
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/create-fuse-node.sh
+
+[Install]
+WantedBy=multi-user.target
