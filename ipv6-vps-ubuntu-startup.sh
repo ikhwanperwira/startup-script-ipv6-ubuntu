@@ -42,8 +42,15 @@ mkdir /root/.config
 mkdir /root/.config/rclone
 cp /root/rclone.conf /root/.config/rclone
 
-# mounting rclone
+# creating fuse device
 apt -y install fuse3
+if hostnamectl | grep -q openvz && [ ! -e /dev/fuse ]; then
+  mknod /dev/fuse c 10 229
+else
+  echo "This virtualization is not OpenVZ or /dev/fuse already exists"
+fi
+
+# rclone mounting setup
 mkdir /mnt/gdunsri
 fusermount -u /mnt/gdunsri
 
