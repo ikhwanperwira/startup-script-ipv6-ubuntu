@@ -32,7 +32,9 @@ apt -y upgrade
 apt -y install screen
 echo 'caption always "%{= kc}Screen session on %H (system load: %l)%-28=%{= .m}%D %d.%m.%Y %0c"' >> /root/.screenrc
 echo 'termcapinfo xterm* ti@:te@' >> /root/.screenrc
-echo "screen -DRR" >> /root/.profile
+echo 'if [ -z "$STY" ]; then' >> /root/.profile
+echo '    screen -DRR' >> /root/.profile
+echo 'fi' >> /root/.profile
 
 # sesuatu barrier agar bisa memanggil
 echo "sleeping"
