@@ -95,5 +95,5 @@ rm -rf ipv6-vps-ubuntu-startup.sh menu.sh rclone.conf rclone_conf.zip rclone-v1.
 
 # tampilkan direktori yang dimount
 echo "menampilkan direktori /mnt/gdunsri..."
-sleep 2
+sleep 5
 ls /mnt/gdunsri
