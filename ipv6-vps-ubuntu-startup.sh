@@ -3,6 +3,26 @@
 # catatan, jalankan skrip ini di direktori /root
 # argument $1 diisi dengan password rclone_conf yait awalannya T akhirannya _
 
+expected_hash="c33de7686f61c393647fc1116604bacc07718a580e9cecd6121d1025fcbc3f2f"
+
+# Check if an argument was provided
+if [ -z "$1" ]; then
+  echo "No input string provided. Exiting."
+  exit 1
+fi
+
+# Calculate the SHA-256 hash of the input string
+input_hash=$(echo -n "$1" | sha256sum | awk '{print $1}')
+
+# Check if the calculated hash matches the expected hash
+if [ "$input_hash" != "$expected_hash" ]; then
+  echo "Hash does not match. Exiting."
+  exit 1
+fi
+
+# If the hash matches, continue with the rest of script....
+echo "Hash matches. Continuing with the script."
+
 # updating
 export DEBIAN_FRONTEND=noninteractive
 apt -y update
