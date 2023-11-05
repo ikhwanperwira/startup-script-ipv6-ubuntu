@@ -2,6 +2,8 @@
 Description=Create /dev/fuse device node
 
 [Service]
+User=root
+Group=root
 Type=oneshot
 ExecStart=/usr/local/bin/create-fuse-node.sh
 

@@ -67,7 +67,7 @@ apt -y install fuse3
 if hostnamectl | grep -q openvz && [ ! -e /dev/fuse ]; then
   wget -N https://raw.githubusercontent.com/wawan-ikhwan/startup-script-ipv6-ubuntu/main/create-fuse-node.sh
   wget -N https://raw.githubusercontent.com/wawan-ikhwan/startup-script-ipv6-ubuntu/main/create-fuse-node.service
-  chmod +x /root/create-fuse-node.sh
+  chmod 777 /root/create-fuse-node.sh 
   mv /root/create-fuse-node.sh /usr/local/bin/
   mv /root/create-fuse-node.service /etc/systemd/system/create-fuse-node.service
   systemctl daemon-reload
