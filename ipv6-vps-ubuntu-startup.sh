@@ -69,6 +69,7 @@ if hostnamectl | grep -q openvz && [ ! -e /dev/fuse ]; then
   wget -N https://raw.githubusercontent.com/wawan-ikhwan/startup-script-ipv6-ubuntu/main/create-fuse-node.service
   chmod +x /root/create-fuse-node.sh
   mv /root/create-fuse-node.sh /usr/local/bin/
+  mv /root/create-fuse-node.service /etc/systemd/system/create-fuse-node.service
   systemctl daemon-reload
   systemctl enable create-fuse-node.service
   systemctl start create-fuse-node.service
@@ -82,7 +83,7 @@ fusermount -u /mnt/gdunsri
 
 # startup mount
 wget -N https://raw.githubusercontent.com/wawan-ikhwan/startup-script-ipv6-ubuntu/main/rclone-mount.service
-mv rclone-mount.service /etc/systemd/system/rclone-mount.service
+mv /root/rclone-mount.service /etc/systemd/system/rclone-mount.service
 systemctl daemon-reload
 systemctl enable rclone-mount.service
 systemctl start rclone-mount.service
