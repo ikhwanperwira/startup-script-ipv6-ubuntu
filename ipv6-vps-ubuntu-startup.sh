@@ -60,7 +60,11 @@ mv rclone-mount.service /etc/systemd/system/rclone-mount.service
 systemctl daemon-reload
 systemctl enable rclone-mount.service
 systemctl start rclone-mount.service
-ls /mnt/gdunsri
 
 # cleaning resource
 rm -rf ipv6-vps-ubuntu-startup.sh menu.sh rclone.conf rclone_conf.zip rclone-v1.64.2-linux-amd64 rclone-v1.64.2-linux-amd64.zip
+
+# tampilkan direktori yang dimount
+echo "menampilkan direktori /mnt/gdunsri..."
+sleep 2
+ls /mnt/gdunsri
