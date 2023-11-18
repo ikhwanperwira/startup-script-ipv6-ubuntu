@@ -19,3 +19,10 @@ wget -N https://raw.githubusercontent.com/wawan-ikhwan/startup-script-ipv6-ubunt
 # Mendapatkan Token Team
 Dia ada di link ini, isi nama organisasi yang valid, kalau mau tau nama organisasi saya, kontak saya secara pribadi:
 [GET WARP TOKEN TEAM](https://web--public--warp-team-api--coia-mfs4.code.run)
+
+# DNS Gateway
+Ini digunakan untuk berinteraksi di jaringan yang sama agar bisa menggunakan domain alih-alih IPv4 100.96.0.0/12 yang melelahkan itu.
+Atur di `.env`
+```.env
+GATEWAY_DNS_LOCATION_IPV6=<ipv6>
+```
