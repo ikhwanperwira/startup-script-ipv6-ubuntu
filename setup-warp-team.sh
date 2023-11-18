@@ -72,6 +72,7 @@ if [[ $dns_server =~ $ipv6_regex ]]; then
 
   # Restart the systemd-resolved service
   systemctl restart systemd-resolved
+  echo "Menggunakan DNS server berhasil: $dns_server"
 else
   echo "Invalid IPv6 address: $dns_server"
 fi
