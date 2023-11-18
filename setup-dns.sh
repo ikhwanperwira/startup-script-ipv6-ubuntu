@@ -5,8 +5,9 @@ update_resolved_conf() {
 
   # Check if there is an uncommented line for DNS
   if grep -q '^DNS=' /etc/systemd/resolved.conf; then
-    # If found, insert the new DNS server to the first order
-    sudo sed -i '/^DNS=/ s/=.*$/='"$dns_server"'/' /etc/systemd/resolved.conf
+    # If found, insert the new DNS server to the first
+    sudo sed -i '/^DNS=/ s/=.*/='"$dns_server"' &/' /etc/systemd/resolved.conf
+    #sudo sed -i '/^DNS=/ s/=.*$/='"$dns_server"'/' /etc/systemd/resolved.conf # overwrite
   else
     # If not found, create a new DNS key with the specified DNS server
     echo "DNS=$dns_server" | sudo tee -a /etc/systemd/resolved.conf > /dev/null
