@@ -2,10 +2,10 @@
 
 update_resolved_conf() {
   local dns_server="$1"
-  
-  # Check if the DNS server IP already exists in the file
-  if grep -q "$dns_server" /etc/systemd/resolved.conf; then
-    echo "DNS server $dns_server already exists. No changes needed."
+
+  # Check if the DNS server is already present in the file
+  if grep -q "^DNS=$dns_server" /etc/systemd/resolved.conf; then
+    echo "DNS server $dns_server is already present. No changes made."
     return
   fi
 
