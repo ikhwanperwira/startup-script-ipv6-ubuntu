@@ -1,8 +1,21 @@
 # About
 Aku capek setup VPS IPv6 setelah VPS terinstall, makanya kubuatkan saja script startup ini coy.
 
+# Apa yang `ipv6-vps-ubuntu-startup.sh` lakukan?
+1. System Update and Upgrade
+2. Screen Configuration (auto attach screen)
+3. Warp Installation (only IPv4)
+4. Rclone Installation
+5. Fuse Device Creation (if openvz)
+6. Rclone Mounting Setup
+7. Display Mounted Directory `/mnt/gdunsi`
+
+# Apa yang `setup-warp-team.sh` lakukan?
+1. Warp Configuration to Team
+2. DNS Server Configuration to using DNS Gateway from CF ZTNA
+
 # Install
-Jangan lupa posisi direktori ada di `/root`
+Jangan lupa posisi executor ada direktori `/root` ketika script di jalankan.
 ```
 wget -N https://raw.githubusercontent.com/wawan-ikhwan/startup-script-ipv6-ubuntu/main/ipv6-vps-ubuntu-startup.sh && chmod +x ipv6-vps-ubuntu-startup.sh && ./ipv6-vps-ubuntu-startup.sh <PW>
  ```
