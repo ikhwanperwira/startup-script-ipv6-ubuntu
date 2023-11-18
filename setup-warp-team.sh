@@ -40,30 +40,38 @@ wget -N https://raw.githubusercontent.com/wawan-ikhwan/startup-script-ipv6-ubunt
 source .env
 
 # assigning variable dns_server from MY_IPV6 var
-dns_server=$MY_IPV6
+dns_server=$GATEWAY_DNS_LOCATION_IPV6
 
 # regex for IPv6 validation
 ipv6_regex='^([0-9a-fA-F]{0,4}:){1,7}[0-9a-fA-F]{0,4}$'
 
 # check if dns_server is a valid IPv6 using the provided regex
 if [[ $dns_server =~ $ipv6_regex ]]; then
+
   # Check if the provided DNS server is already set
   if grep -q "^DNS=$dns_server" /etc/systemd/resolved.conf; then
     echo "DNS server is already set to $dns_server"
-    return
+  else
+    # Check if there is an uncommented line for DNS
+    if grep -q '^DNS=' /etc/systemd/resolved.conf; then
+      # If found, overwrite existing DNS server to the new DNS server
+      sed -i '/^DNS=/ s/=.*$/='"$dns_server"'/' /etc/systemd/resolved.conf 
+    else
+      # If not found, create a new DNS key with the specified DNS server
+      echo "DNS=$dns_server" | tee -a /etc/systemd/resolved.conf > /dev/null
+    fi
   fi
 
-  # Check if there is an uncommented line for DNS
-  if grep -q '^DNS=' /etc/systemd/resolved.conf; then
-    # If found, overwrite existing DNS server to the new DNS server
-    sudo sed -i '/^DNS=/ s/=.*$/='"$dns_server"'/' /etc/systemd/resolved.conf 
+  # Check if the entry already exists in /etc/resolv.conf
+  if ! grep -q "^nameserver $dns_server$" /etc/resolv.conf; then
+    # If not, add the entry
+    sed -i "1i\\nameserver $dns_server" /etc/resolv.conf
   else
-    # If not found, create a new DNS key with the specified DNS server
-    echo "DNS=$dns_server" | sudo tee -a /etc/systemd/resolved.conf > /dev/null
+    echo "DNS server entry already exists. No changes made."
   fi
 
   # Restart the systemd-resolved service
-  sudo systemctl restart systemd-resolved
+  systemctl restart systemd-resolved
 else
   echo "Invalid IPv6 address: $dns_server"
 fi
