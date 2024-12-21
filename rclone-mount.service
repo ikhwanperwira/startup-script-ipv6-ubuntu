@@ -6,8 +6,8 @@ Wants=network-online.target
 [Service]
 Type=simple
 User=root
-ExecStart=/bin/rclone mount gdunsri:/ /mnt/gdunsri --allow-non-empty --allow-other --async-read --dir-perms 7777 --file-perms 7777 --no-checksum --config=/root/.config/rclone/rclone.conf -vv
-ExecStop=/usr/bin/fusermount -u /mnt/gdunsri
+ExecStart=/bin/rclone mount gdunsri:/ /mnt/gdperm --allow-non-empty --allow-other --async-read --dir-perms 7777 --file-perms 7777 --no-checksum --config=/root/.config/rclone/rclone.conf -vv
+ExecStop=/usr/bin/fusermount -u /mnt/gdperm
 Restart=on-failure
 RestartSec=30
 StartLimitInterval=60s
