@@ -8,7 +8,7 @@ Aku capek setup VPS IPv6 setelah VPS terinstall, makanya kubuatkan saja script s
 4. Rclone Installation
 5. Fuse Device Creation (if openvz)
 6. Rclone Mounting Setup
-7. Display Mounted Directory `/mnt/gdunsi`
+7. Display Mounted Directory `/mnt/rcry/`
 
 # Apa yang `setup-warp-team.sh` lakukan?
 1. Warp Configuration to Team
