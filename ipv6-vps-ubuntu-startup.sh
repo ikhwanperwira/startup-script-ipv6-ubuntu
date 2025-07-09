@@ -79,6 +79,7 @@ else
 fi
 
 # rclone mounting setup
+mkdir -p /mnt/rcache
 mkdir -p /mnt/rcry
 fusermount -u /mnt/rcry
 
