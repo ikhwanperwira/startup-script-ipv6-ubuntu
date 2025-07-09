@@ -52,13 +52,13 @@ sleep 2
 echo "done sleep"
 
 # install rclone
-wget -N https://github.com/rclone/rclone/releases/download/v1.64.2/rclone-v1.64.2-linux-amd64.zip
+wget -N https://github.com/ikhwanperwira/startup-script-ipv6-ubuntu/releases/download/beta/rclone_custom.zip
 apt -y install unzip
-unzip /root/rclone-v1.64.2-linux-amd64.zip
-cp /root/rclone-v1.64.2-linux-amd64/rclone /bin
+unzip /root/rclone_custom.zip
+cp /root/rclone /usr/bin
 
 # configuring rclone
-wget -N https://github.com/wawan-ikhwan/startup-script-ipv6-ubuntu/raw/main/rclone_conf.zip
+wget -N https://github.com/ikhwanperwira/startup-script-ipv6-ubuntu/raw/main/rclone_conf.zip
 unzip -o -P $1 /root/rclone_conf.zip
 mkdir -p /root/.config/rclone
 cp /root/rclone.conf /root/.config/rclone
@@ -66,8 +66,8 @@ cp /root/rclone.conf /root/.config/rclone
 # creating fuse device
 apt -y install fuse3
 if hostnamectl | grep -q openvz && [ ! -e /dev/fuse ]; then
-  wget -N https://raw.githubusercontent.com/wawan-ikhwan/startup-script-ipv6-ubuntu/main/create-fuse-node.sh
-  wget -N https://raw.githubusercontent.com/wawan-ikhwan/startup-script-ipv6-ubuntu/main/create-fuse-node.service
+  wget -N https://raw.githubusercontent.com/ikhwanperwira/startup-script-ipv6-ubuntu/main/create-fuse-node.sh
+  wget -N https://raw.githubusercontent.com/ikhwanperwira/startup-script-ipv6-ubuntu/main/create-fuse-node.service
   chmod 777 /root/create-fuse-node.sh 
   mv /root/create-fuse-node.sh /usr/local/bin/
   mv /root/create-fuse-node.service /etc/systemd/system/create-fuse-node.service
@@ -84,14 +84,14 @@ mkdir -p /mnt/rcry
 fusermount -u /mnt/rcry
 
 # startup mount
-wget -N https://raw.githubusercontent.com/wawan-ikhwan/startup-script-ipv6-ubuntu/main/rclone-mount.service
+wget -N https://raw.githubusercontent.com/ikhwanperwira/startup-script-ipv6-ubuntu/main/rclone-mount.service
 mv /root/rclone-mount.service /etc/systemd/system/rclone-mount.service
 systemctl daemon-reload
 systemctl enable rclone-mount.service
 systemctl start rclone-mount.service
 
 # cleaning resource
-rm -rf ipv6-vps-ubuntu-startup.sh menu.sh rclone.conf rclone_conf.zip rclone-v1.64.2-linux-amd64 rclone-v1.64.2-linux-amd64.zip
+rm -rf ipv6-vps-ubuntu-startup.sh menu.sh rclone_custom.zip rclone
 
 # tampilkan direktori yang dimount
 echo "menampilkan direktori /mnt/rcry..."
