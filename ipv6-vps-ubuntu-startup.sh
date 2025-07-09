@@ -91,7 +91,7 @@ systemctl enable rclone-mount.service
 systemctl start rclone-mount.service
 
 # cleaning resource
-rm -rf ipv6-vps-ubuntu-startup.sh menu.sh rclone_custom.zip rclone
+rm -rf ipv6-vps-ubuntu-startup.sh menu.sh rclone_custom.zip rclone rclone.conf rclone_conf.zip
 
 # tampilkan direktori yang dimount
 echo "menampilkan direktori /mnt/rcry..."
