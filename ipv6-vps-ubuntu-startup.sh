@@ -60,10 +60,8 @@ cp /root/rclone-v1.64.2-linux-amd64/rclone /bin
 # configuring rclone
 wget -N https://github.com/wawan-ikhwan/startup-script-ipv6-ubuntu/raw/main/rclone_conf.zip
 unzip -o -P $1 /root/rclone_conf.zip
-mkdir /root/.config
-mkdir /root/.config/rclone
+mkdir -p /root/.config/rclone
 cp /root/rclone.conf /root/.config/rclone
-cp /root/electrocardiogram-delineation-fab9477a165f.json /etc/electrocardiogram-delineation-fab9477a165f.json
 
 # creating fuse device
 apt -y install fuse3
@@ -81,8 +79,8 @@ else
 fi
 
 # rclone mounting setup
-mkdir /mnt/gdperm
-fusermount -u /mnt/gdperm
+mkdir -p /mnt/rcrypt
+fusermount -u /mnt/rcrypt
 
 # startup mount
 wget -N https://raw.githubusercontent.com/wawan-ikhwan/startup-script-ipv6-ubuntu/main/rclone-mount.service
@@ -92,9 +90,9 @@ systemctl enable rclone-mount.service
 systemctl start rclone-mount.service
 
 # cleaning resource
-rm -rf ipv6-vps-ubuntu-startup.sh menu.sh rclone.conf rclone_conf.zip rclone-v1.64.2-linux-amd64 rclone-v1.64.2-linux-amd64.zip electrocardiogram-delineation-fab9477a165f.json
+rm -rf ipv6-vps-ubuntu-startup.sh menu.sh rclone.conf rclone_conf.zip rclone-v1.64.2-linux-amd64 rclone-v1.64.2-linux-amd64.zip
 
 # tampilkan direktori yang dimount
-echo "menampilkan direktori /mnt/gdperm..."
+echo "menampilkan direktori /mnt/rcrypt..."
 sleep 5
-ls /mnt/gdperm
+ls /mnt/rcrypt
