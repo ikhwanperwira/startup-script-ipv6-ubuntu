@@ -1,17 +1,48 @@
 [Unit]
-Description=Rclone Mount Service
+Description=Rclone Mount: rcrypt -> /mnt/rcry
 After=network-online.target
 Wants=network-online.target
 
 [Service]
 Type=simple
+ExecStopPre=/usr/bin/fusermount -u /mnt/rcry
+ExecStop=/usr/bin/fusermount -u /mnt/rcry
+ExecStart=/usr/bin/rclone mount rcrypt:/ /mnt/rcry/ \
+  --allow-other \
+  --async-read \
+  --dir-perms=0777 \
+  --file-perms=0777 \
+  --config=/root/.config/rclone/rclone.conf \
+  -vv \
+  --drive-use-trash \
+  --vfs-refresh \
+  --vfs-cache-mode=full \
+  --vfs-cache-max-age=999h \
+  --vfs-cache-max-size=15G \
+  --dir-cache-time=999h \
+  --vfs-cache-poll-interval=5m \
+  --vfs-write-back=1h \
+  --poll-interval=0 \
+  --drive-pacer-min-sleep=200ms \
+  --drive-pacer-burst=200 \
+  --tpslimit=10 \
+  --transfers=16 \
+  --checkers=16 \
+  --vfs-read-chunk-size=64M \
+  --vfs-read-chunk-size-limit=128M \
+  --drive-chunk-size=256M \
+  --drive-upload-cutoff=512M \
+  --cache-dir=/mnt/rcache/ \
+  --vfs-fast-fingerprint \
+  --no-checksum \
+  --no-modtime \
+  --no-seek \
+  --trash-dir=.trash \
+  --attr-timeout=60s \
+  --debug-fuse
+Restart=always
+RestartSec=10
 User=root
-ExecStart=/bin/rclone mount gdperm:/ /mnt/gdperm --allow-non-empty --allow-other --async-read --dir-perms 7777 --file-perms 7777 --no-checksum --config=/root/.config/rclone/rclone.conf -vv
-ExecStop=/usr/bin/fusermount -u /mnt/gdperm
-Restart=on-failure
-RestartSec=30
-StartLimitInterval=60s
-StartLimitBurst=3
 
 [Install]
 WantedBy=multi-user.target
