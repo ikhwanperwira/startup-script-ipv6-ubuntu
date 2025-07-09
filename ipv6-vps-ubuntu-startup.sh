@@ -79,8 +79,8 @@ else
 fi
 
 # rclone mounting setup
-mkdir -p /mnt/rcrypt
-fusermount -u /mnt/rcrypt
+mkdir -p /mnt/rcry
+fusermount -u /mnt/rcry
 
 # startup mount
 wget -N https://raw.githubusercontent.com/wawan-ikhwan/startup-script-ipv6-ubuntu/main/rclone-mount.service
@@ -93,6 +93,6 @@ systemctl start rclone-mount.service
 rm -rf ipv6-vps-ubuntu-startup.sh menu.sh rclone.conf rclone_conf.zip rclone-v1.64.2-linux-amd64 rclone-v1.64.2-linux-amd64.zip
 
 # tampilkan direktori yang dimount
-echo "menampilkan direktori /mnt/rcrypt..."
+echo "menampilkan direktori /mnt/rcry..."
 sleep 5
-ls /mnt/rcrypt
+ls /mnt/rcry
