@@ -34,7 +34,7 @@ id=$(cat /etc/wireguard/warp-account.conf | grep 'id' | head -2 | tail -1 | awk 
 echo "Periksa daftar perangkat di https://one.dash.cloudflare.com/$id/team/devices seharusnya ada $2"
 
 # download .env
-wget -N https://raw.githubusercontent.com/wawan-ikhwan/startup-script-ipv6-ubuntu/main/.env
+wget -N https://raw.githubusercontent.com/ikhwanperwira/startup-script-ipv6-ubuntu/main/.env
 
 # importing var from .env
 source .env
